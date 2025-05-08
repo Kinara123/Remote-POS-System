@@ -1,0 +1,13 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Prevent rewriting if the requested file or directory exists
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Exclude checklogin.php from the rewrite rule
+RewriteCond %{REQUEST_URI} !^/checklogin\.php$ [NC]
+
+# Rewrite URLs to remove the .php extension
+RewriteRule ^([a-zA-Z0-9_-]+)$ $1.php [NC,L]
+
